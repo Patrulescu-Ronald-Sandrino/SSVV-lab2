@@ -249,4 +249,23 @@ public class Service {
         double saptamanaPredare = Math.ceil((double)days/7);
         return (int)saptamanaPredare;
     }
+
+    public static Service getService() {
+        StudentValidator studentValidator = new StudentValidator();
+        TemaValidator temaValidator = new TemaValidator();
+        String filenameStudent = "fisiere/Studenti.xml";
+        String filenameTema = "fisiere/Teme.xml";
+        String filenameNota = "fisiere/Note.xml";
+
+        //StudentFileRepository studentFileRepository = new StudentFileRepository(filenameStudent);
+        //TemaFileRepository temaFileRepository = new TemaFileRepository(filenameTema);
+        //NotaValidator notaValidator = new NotaValidator(studentFileRepository, temaFileRepository);
+        //NotaFileRepository notaFileRepository = new NotaFileRepository(filenameNota);
+
+        StudentXMLRepo studentXMLRepository = new StudentXMLRepo(filenameStudent);
+        TemaXMLRepo temaXMLRepository = new TemaXMLRepo(filenameTema);
+        NotaValidator notaValidator = new NotaValidator(studentXMLRepository, temaXMLRepository);
+        NotaXMLRepo notaXMLRepository = new NotaXMLRepo(filenameNota);
+        return new Service(studentXMLRepository, studentValidator, temaXMLRepository, temaValidator, notaXMLRepository, notaValidator);
+    }
 }
