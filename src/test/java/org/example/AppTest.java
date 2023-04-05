@@ -1,6 +1,7 @@
 package org.example;
 
 import domain.Student;
+import domain.Tema;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
@@ -156,6 +157,30 @@ public class AppTest
             service.addStudent(student);
         } catch (ValidationException e) {
             fail("Expected no exception to be thrown");
+        }
+    }
+
+    // addAssignment - addTema
+    public void test_addTema_whenNumarIsNull_thenFail() {
+        var service = Service.getService();
+        Tema tema = new Tema(null, "description", 1, 1);
+
+        try {
+            service.addTema(tema);
+            fail("Expected an NullPointerException to be thrown");
+        } catch (NullPointerException e) {
+        }
+    }
+
+    public void test_addTema_whenNumarIsEmpty_thenFail() {
+        var service = Service.getService();
+        Tema tema = new Tema("", "description", 1, 1);
+
+        try {
+            service.addTema(tema);
+            fail("Expected an ValidationException to be thrown");
+        } catch (ValidationException e) {
+            assertEquals("Numar tema invalid!", e.getMessage());
         }
     }
 }
