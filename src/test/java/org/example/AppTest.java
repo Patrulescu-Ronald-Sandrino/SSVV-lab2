@@ -147,4 +147,15 @@ public class AppTest
             assertEquals("Email incorect!", e.getMessage());
         }
     }
+
+    public void testWhenAllFieldsAreCorrect_thenOk() {
+        var service = Service.getService();
+        Student student = new Student("3", "name", 1, "email");
+
+        try {
+            service.addStudent(student);
+        } catch (ValidationException e) {
+            fail("Expected no exception to be thrown");
+        }
+    }
 }
