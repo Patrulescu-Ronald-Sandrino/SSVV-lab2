@@ -243,6 +243,7 @@ public class Service {
      * @param predare - data predarii unei teme
      * @return saptamana in care a fost predata tema
      */
+    // calculeazaSPredare(nota.getData()) = 14 for which nota.getData?
     private int calculeazaSPredare(LocalDate predare) {
         LocalDate startDate = Curent.getStartDate();
         long days = DAYS.between(startDate, predare);

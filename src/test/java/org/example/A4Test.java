@@ -4,7 +4,15 @@ import domain.Nota;
 import domain.Student;
 import domain.Tema;
 import junit.framework.TestCase;
+import org.junit.jupiter.api.BeforeEach;
+import org.mockito.Mock;
+import repository.NotaXMLRepo;
+import repository.StudentXMLRepo;
+import repository.TemaXMLRepo;
 import service.Service;
+import validation.NotaValidator;
+import validation.StudentValidator;
+import validation.TemaValidator;
 
 import java.time.LocalDate;
 import java.util.Set;
@@ -12,6 +20,9 @@ import java.util.Spliterator;
 import java.util.Spliterators;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
+
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 public class A4Test extends TestCase {
     public void testAddStudent() {
@@ -108,4 +119,5 @@ public class A4Test extends TestCase {
 //        assertEquals(temaId, resultNota.getIdTema());
 //        assertEquals(expectedNota, resultNota.getNota(), 0.01);
     }
+
 }
